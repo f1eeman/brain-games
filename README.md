@@ -10,3 +10,7 @@ How to install & how first game works?
 How second game works?
 
 [![asciicast](https://asciinema.org/a/Pr1d4jPPaQAk1FtrelB7rQ6cz.svg)](https://asciinema.org/a/Pr1d4jPPaQAk1FtrelB7rQ6cz?theme=solarized-dark)
+
+How third game works?
+
+[![asciicast](https://asciinema.org/a/3Ycrxzdhi4izUFoekF04Cz3LQ.svg)](https://asciinema.org/a/3Ycrxzdhi4izUFoekF04Cz3LQ)
