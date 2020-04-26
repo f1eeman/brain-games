@@ -14,3 +14,7 @@ How second game works?
 How third game works?
 
 [![asciicast](https://asciinema.org/a/3Ycrxzdhi4izUFoekF04Cz3LQ.svg)](https://asciinema.org/a/3Ycrxzdhi4izUFoekF04Cz3LQ)
+
+How fourth game works?
+
+[![asciicast](https://asciinema.org/a/znhDkZUZFbxqnYWkt6QkPbzqV.svg)](https://asciinema.org/a/znhDkZUZFbxqnYWkt6QkPbzqV)

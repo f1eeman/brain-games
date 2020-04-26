@@ -11,8 +11,8 @@ export default (numberIter) => {
 
   let counter = 0;
   for (let i = 0; i < numberIter; i += 1) {
-    const firstNumber = getRandomNum();
-    const secondNumber = getRandomNum();
+    const firstNumber = getRandomNum(100);
+    const secondNumber = getRandomNum(100);
     const correctAnswer = getGreatestCommonDivisor(firstNumber, secondNumber);
 
     console.log(`Question: ${firstNumber} ${secondNumber}`);

@@ -13,8 +13,8 @@ export default () => {
   const numberIter = operators.length;
 
   for (let i = 0; i < numberIter; i += 1) {
-    const firstNum = getRandomNum();
-    const secondNum = getRandomNum();
+    const firstNum = getRandomNum(100);
+    const secondNum = getRandomNum(100);
     console.log(`Question: ${firstNum} ${operators[i]} ${secondNum}`);
     let correctAnswer;
     switch (operators[i]) {
