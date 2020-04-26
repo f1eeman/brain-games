@@ -35,3 +35,16 @@ export const getArithmeticProg = (begin, difference, lengthProg) => {
   }
   return arr;
 };
+
+export const isPrime = (num) => {
+  if (typeof (num) !== 'number') {
+    return NaN;
+  }
+  const stopValue = num / 2;
+  for (let i = 2; i < stopValue; i += 1) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+};

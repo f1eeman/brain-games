@@ -18,3 +18,7 @@ How third game works?
 How fourth game works?
 
 [![asciicast](https://asciinema.org/a/znhDkZUZFbxqnYWkt6QkPbzqV.svg)](https://asciinema.org/a/znhDkZUZFbxqnYWkt6QkPbzqV)
+
+How fifth game works?
+
+[![asciicast](https://asciinema.org/a/xzF17KVxPhhPOXTEJTG9X6ebu.svg)](https://asciinema.org/a/xzF17KVxPhhPOXTEJTG9X6ebu)
