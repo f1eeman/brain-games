@@ -1,7 +1,7 @@
 {
   "name": "frontend-project-lvl1",
   "version": "1.4.0",
-  "description": "",
+  "description": "Личный проект «Игры разума» от Hexlet",
   "type": "module",
   "main": "src/index.js",
   "bin": {
@@ -19,7 +19,25 @@
     "type": "git",
     "url": "git+https://github.com/f1eeman/frontend-project-lvl1.git"
   },
-  "author": "",
+  "keywords" : [
+    "brain-games",
+    "brain-math",
+    "brain-calc",
+    "brain-even",
+    "brain-gcd",
+    "brain-greatestCommonDivisor",
+    "brain-arithmeticProgression",
+    "brain-prime",
+    "getGreatestCommonDivisor",
+    "greatest common divisor",
+    "getRandomNum",
+    "random number",
+    "isPrime",
+    "prime number",
+    "getArithmeticProg",
+    "arithmetic progression"
+  ],
+  "author": "daniayr zhankhmetov",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/f1eeman/frontend-project-lvl1/issues"

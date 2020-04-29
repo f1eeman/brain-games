@@ -1,15 +1,25 @@
 import readlineSync from 'readline-sync';
 import {
-  getRandomNum, showGreeting, showSalute, getArithmeticProg,
+  getRandomNum, showGreeting, showSalute,
 } from '../index.js';
 
-export default (numberIter) => {
+const getArithmeticProg = (begin, difference, lengthProg) => {
+  const arr = [];
+  let value = begin;
+  for (let i = 0; i < lengthProg; i += 1) {
+    arr.push(value);
+    value += difference;
+  }
+  return arr;
+};
+
+export default () => {
   showGreeting();
   const userName = readlineSync.question('May i have your name? ');
   showSalute(userName);
   console.log('What number is missing in the progression?');
   let counter = 0;
-  for (let i = 0; i < numberIter; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
     const randomNum = getRandomNum(100);
     const array = getArithmeticProg(randomNum, 2, 10);
     const index = getRandomNum(9);

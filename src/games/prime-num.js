@@ -1,16 +1,30 @@
 import readlineSync from 'readline-sync';
 import {
-  getRandomNum, showGreeting, showSalute, isPrime,
+  getRandomNum, showGreeting, showSalute,
 } from '../index.js';
 
-export default (numberIter) => {
+const isPrime = (num) => {
+  if (typeof (num) !== 'number') {
+    return NaN;
+  }
+  const stopValue = num / 2;
+  for (let i = 2; i < stopValue; i += 1) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+};
+
+
+export default () => {
   showGreeting();
   const userName = readlineSync.question('May i have your name? ');
   showSalute(userName);
   console.log('Answer "yes" if given number is prime. Otherwise answer "no"');
 
   let counter = 0;
-  for (let i = 0; i < numberIter; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
     const randomNum = getRandomNum(100);
     console.log(`Question: ${randomNum}`);
     const userAnswer = readlineSync.question('Your answer: ');

@@ -3,14 +3,14 @@ import {
   getRandomNum, showGreeting, showSalute,
 } from '../index.js';
 
-export default (numberIter) => {
+export default () => {
   showGreeting();
   const userName = readlineSync.question('May i have your name? ');
   showSalute(userName);
   console.log('Answer "yes" if the number is even, otherwise answer "no"');
 
   let counter = 0;
-  for (let i = 0; i < numberIter; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
     const randomNum = getRandomNum(100);
     console.log(`Question: ${randomNum}`);
     const userAnswer = readlineSync.question('Your answer: ');
