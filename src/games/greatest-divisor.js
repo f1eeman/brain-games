@@ -1,6 +1,5 @@
-import readlineSync from 'readline-sync';
 import {
-  getRandomNum, showGreeting, showSalute,
+  getRandomNum, showGreeting, getUserAnswer, getQuestion, checkUserAnswer, getCongrats,
 } from '../index.js';
 
 const getGreatestCommonDivisor = (firstNum, secondNum) => {
@@ -22,27 +21,18 @@ const getGreatestCommonDivisor = (firstNum, secondNum) => {
 };
 
 export default () => {
-  showGreeting();
-  const userName = readlineSync.question('May i have your name? ');
-  showSalute(userName);
+  const userName = showGreeting();
   console.log('Find the greatest common divisor of given numbers.');
-
   let counter = 0;
-  for (let i = 0; i < 3; i += 1) {
+  while (counter < 3) {
     const firstNumber = getRandomNum(100);
     const secondNumber = getRandomNum(100);
     const correctAnswer = getGreatestCommonDivisor(firstNumber, secondNumber);
-
-    console.log(`Question: ${firstNumber} ${secondNumber}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-
-    if (Number(userAnswer) === correctAnswer) {
-      console.log('Correct');
-      counter += 1;
-    } else {
-      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". \n Let's try again, ${userName}!`);
-      break;
-    }
+    getQuestion(firstNumber, secondNumber);
+    const userAnswer = getUserAnswer();
+    const isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, true);
+    if (!isUserAnswerRight) break;
+    counter += 1;
   }
-  if (counter === 3) console.log(`Congratulations, ${userName}!`);
+  if (counter === 3) getCongrats(userName);
 };

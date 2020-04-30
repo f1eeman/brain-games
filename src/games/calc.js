@@ -1,21 +1,17 @@
-import readlineSync from 'readline-sync';
 import {
-  getRandomNum, showGreeting, showSalute,
+  getRandomNum, showGreeting, getUserAnswer, getQuestion, checkUserAnswer, getCongrats,
 } from '../index.js';
 
 export default () => {
-  showGreeting();
-  const userName = readlineSync.question('May i have your name? ');
-  showSalute(userName);
+  const userName = showGreeting();
   console.log('What is the result of the expression?');
   let counter = 0;
   const operators = ['+', '-', '*'];
-  const numberIter = operators.length;
 
-  for (let i = 0; i < numberIter; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
     const firstNum = getRandomNum(100);
     const secondNum = getRandomNum(100);
-    console.log(`Question: ${firstNum} ${operators[i]} ${secondNum}`);
+    getQuestion(firstNum, operators[i], secondNum);
     let correctAnswer;
     switch (operators[i]) {
       case '+':
@@ -28,15 +24,10 @@ export default () => {
         correctAnswer = firstNum * secondNum;
         break;
     }
-    const userAnswer = readlineSync.question('Your answer: ');
-
-    if (Number(userAnswer) === correctAnswer) {
-      console.log('Correct');
-      counter += 1;
-    } else {
-      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". \n Let's try again, ${userName}!`);
-      break;
-    }
+    const userAnswer = getUserAnswer();
+    const isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, true);
+    if (!isUserAnswerRight) break;
+    counter += 1;
   }
-  if (counter === 3) console.log(`Congratulations, ${userName}!`);
+  if (counter === 3) getCongrats(userName);
 };

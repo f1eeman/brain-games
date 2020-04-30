@@ -1,28 +1,20 @@
-import readlineSync from 'readline-sync';
 import {
-  getRandomNum, showGreeting, showSalute,
+  getRandomNum, showGreeting, getUserAnswer, getQuestion, checkUserAnswer, getCongrats,
 } from '../index.js';
 
 export default () => {
-  showGreeting();
-  const userName = readlineSync.question('May i have your name? ');
-  showSalute(userName);
+  const userName = showGreeting();
   console.log('Answer "yes" if the number is even, otherwise answer "no"');
-
   let counter = 0;
-  for (let i = 0; i < 3; i += 1) {
+  while (counter < 3) {
     const randomNum = getRandomNum(100);
-    console.log(`Question: ${randomNum}`);
-    const userAnswer = readlineSync.question('Your answer: ');
+    getQuestion(randomNum);
+    const userAnswer = getUserAnswer();
     const isEven = randomNum % 2 === 0;
-    if ((isEven && (userAnswer === 'yes')) || (!isEven && (userAnswer === 'no'))) {
-      console.log('Correct');
-      counter += 1;
-    } else {
-      const correctAnswer = isEven ? 'yes' : 'no';
-      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". \n Let's try again, ${userName}!`);
-      break;
-    }
+    const correctAnswer = isEven ? 'yes' : 'no';
+    const isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, false);
+    if (!isUserAnswerRight) break;
+    counter += 1;
   }
-  if (counter === 3) console.log(`Congratulations, ${userName}!`);
+  if (counter === 3) getCongrats(userName);
 };
