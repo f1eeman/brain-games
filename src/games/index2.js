@@ -45,7 +45,7 @@ export const getCongrats = (userName) => {
 
 export const showRulesGame = (rules) => console.log(rules);
 
-export const game = (rules, gameFunc, typeGame = 'standart', rounds = 3) => {
+export const game = (rules, gameFunc, rounds = 3, gcd = false, prog = false, calc = false) => {
   const userName = showGreeting();
   showRulesGame(rules);
   let counter = 0;
@@ -64,49 +64,52 @@ export const game = (rules, gameFunc, typeGame = 'standart', rounds = 3) => {
     let editArray;
     let str;
     let index;
+    if (gameFunc) {
+      array = gameFunc(firstRandomNum, stepsProgression, lengthProgression);
+      index = getRandomNum(minIndex, maxIndex);
+      editArray = [...array];
+      editArray[index] = '..';
+      str = editArray.join(' ');
+    }
 
-    let correctAnswer;
-    switch (typeGame) {
-      case 'calc':
-        getQuestion(firstRandomNum, operators[counter], secondRandomNum);
-        switch (operators[counter]) {
-          case '+':
-            correctAnswer = firstRandomNum + secondRandomNum;
-            break;
-          case '-':
-            correctAnswer = firstRandomNum - secondRandomNum;
-            break;
-          default:
-            correctAnswer = firstRandomNum * secondRandomNum;
-            break;
-        }
-        break;
-      case 'gcd':
-        getQuestion(firstRandomNum, secondRandomNum);
-        correctAnswer = gameFunc(firstRandomNum, secondRandomNum);
-        break;
-      case 'prog':
-        array = gameFunc(firstRandomNum, stepsProgression, lengthProgression);
-        index = getRandomNum(minIndex, maxIndex);
-        editArray = [...array];
-        editArray[index] = '..';
-        str = editArray.join(' ');
-        getQuestion(str);
-        correctAnswer = array[index];
-        break;
-      default:
-        getQuestion(firstRandomNum);
-        correctAnswer = gameFunc(firstRandomNum) ? 'yes' : 'no';
-        break;
+    if (gcd) {
+      getQuestion(firstRandomNum, secondRandomNum);
+    } else if (prog) {
+      getQuestion(str);
+    } else if (calc) {
+      getQuestion(firstRandomNum, operators[counter], secondRandomNum);
+    } else {
+      getQuestion(firstRandomNum);
     }
 
     const userAnswer = getUserAnswer();
 
-    let isUserAnswerRight;
-    if (typeGame === 'standart') {
-      isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, false);
+    let correctAnswer;
+    if (gcd) {
+      correctAnswer = gameFunc(firstRandomNum, secondRandomNum);
+    } else if (prog) {
+      correctAnswer = array[index];
+    } else if (calc) {
+      switch (operators[counter]) {
+        case '+':
+          correctAnswer = firstRandomNum + secondRandomNum;
+          break;
+        case '-':
+          correctAnswer = firstRandomNum - secondRandomNum;
+          break;
+        default:
+          correctAnswer = firstRandomNum * secondRandomNum;
+          break;
+      }
     } else {
+      correctAnswer = gameFunc(firstRandomNum) ? 'yes' : 'no';
+    }
+
+    let isUserAnswerRight;
+    if (gcd || prog || calc) {
       isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, true);
+    } else {
+      isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, false);
     }
 
     if (!isUserAnswerRight) break;

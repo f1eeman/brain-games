@@ -1,6 +1,6 @@
 import { game } from '../index.js';
 
 const rules = 'What is the result of the expression?';
-const rounds = 3;
+const typeGame = 'calc';
 
-export default () => game(rules, null, rounds, false, false, true);
+export default () => game(rules, null, typeGame);
