@@ -50,54 +50,43 @@ export const game = (rules, gameFunc, typeGame = 'standart', rounds = 3) => {
   showRulesGame(rules);
   let counter = 0;
 
-  const stepsProgression = 2;
-  const lengthProgression = 10;
-  const minIndex = 0;
-  const maxIndex = 9;
-  const operators = ['+', '-', '*'];
-
   while (counter < rounds) {
     const firstRandomNum = getRandomNum();
     const secondRandomNum = getRandomNum();
 
-    let array;
-    let editArray;
-    let str;
-    let index;
-
     let correctAnswer;
-    switch (typeGame) {
-      case 'calc':
-        getQuestion(firstRandomNum, operators[counter], secondRandomNum);
-        switch (operators[counter]) {
-          case '+':
-            correctAnswer = firstRandomNum + secondRandomNum;
-            break;
-          case '-':
-            correctAnswer = firstRandomNum - secondRandomNum;
-            break;
-          default:
-            correctAnswer = firstRandomNum * secondRandomNum;
-            break;
-        }
-        break;
-      case 'gcd':
-        getQuestion(firstRandomNum, secondRandomNum);
-        correctAnswer = gameFunc(firstRandomNum, secondRandomNum);
-        break;
-      case 'prog':
-        array = gameFunc(firstRandomNum, stepsProgression, lengthProgression);
-        index = getRandomNum(minIndex, maxIndex);
-        editArray = [...array];
-        editArray[index] = '..';
-        str = editArray.join(' ');
-        getQuestion(str);
-        correctAnswer = array[index];
-        break;
-      default:
-        getQuestion(firstRandomNum);
-        correctAnswer = gameFunc(firstRandomNum) ? 'yes' : 'no';
-        break;
+    if (typeGame === 'calc') {
+      const operators = ['+', '-', '*'];
+      getQuestion(firstRandomNum, operators[counter], secondRandomNum);
+      switch (operators[counter]) {
+        case '+':
+          correctAnswer = firstRandomNum + secondRandomNum;
+          break;
+        case '-':
+          correctAnswer = firstRandomNum - secondRandomNum;
+          break;
+        default:
+          correctAnswer = firstRandomNum * secondRandomNum;
+          break;
+      }
+    } else if (typeGame === 'gcd') {
+      getQuestion(firstRandomNum, secondRandomNum);
+      correctAnswer = gameFunc(firstRandomNum, secondRandomNum);
+    } else if (typeGame === 'prog') {
+      const stepsProgression = 2;
+      const lengthProgression = 10;
+      const minIndex = 0;
+      const maxIndex = 9;
+      const array = gameFunc(firstRandomNum, stepsProgression, lengthProgression);
+      const index = getRandomNum(minIndex, maxIndex);
+      const editArray = [...array];
+      editArray[index] = '..';
+      const str = editArray.join(' ');
+      getQuestion(str);
+      correctAnswer = array[index];
+    } else {
+      getQuestion(firstRandomNum);
+      correctAnswer = gameFunc(firstRandomNum) ? 'yes' : 'no';
     }
 
     const userAnswer = getUserAnswer();
