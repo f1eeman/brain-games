@@ -2,6 +2,8 @@ import {
   getRandomNum, showGreeting, getUserAnswer, getQuestion, checkUserAnswer, getCongrats,
 } from '../index.js';
 
+const isEven = (num) => num % 2 === 0;
+
 export default () => {
   const userName = showGreeting();
   console.log('Answer "yes" if the number is even, otherwise answer "no"');
@@ -10,8 +12,7 @@ export default () => {
     const randomNum = getRandomNum();
     getQuestion(randomNum);
     const userAnswer = getUserAnswer();
-    const isEven = randomNum % 2 === 0;
-    const correctAnswer = isEven ? 'yes' : 'no';
+    const correctAnswer = isEven(randomNum) ? 'yes' : 'no';
     const isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, false);
     if (!isUserAnswerRight) break;
     counter += 1;

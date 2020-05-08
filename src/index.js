@@ -30,9 +30,9 @@ export const getErrorMessage = (userName, userAnswer, correctAnswer) => {
 };
 
 export const checkUserAnswer = (userName, userAnswer, correctAnswer, toNumber) => {
-  const editUserAnswer = toNumber ? Number(userAnswer) : userAnswer;
+  const editUserAnswer = toNumber ? Number(userAnswer) : userAnswer.toLowerCase();
   if (editUserAnswer === correctAnswer) {
-    console.log('Correct');
+    console.log('Correct!');
     return true;
   }
   getErrorMessage(userName, userAnswer, correctAnswer);
@@ -45,7 +45,7 @@ export const getCongrats = (userName) => {
 
 export const showRulesGame = (rules) => console.log(rules);
 
-export const game = (rules, gameFunc, rounds) => {
+export const game = (rules, gameFunc, rounds = 3) => {
   const userName = showGreeting();
   showRulesGame(rules);
   let counter = 0;

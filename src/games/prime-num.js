@@ -23,8 +23,7 @@ export default () => {
     const randomNum = getRandomNum();
     getQuestion(randomNum);
     const userAnswer = getUserAnswer();
-    const isValuePrime = isPrime(randomNum);
-    const correctAnswer = isValuePrime ? 'yes' : 'no';
+    const correctAnswer = isPrime(randomNum) ? 'yes' : 'no';
     const isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, false);
     if (!isUserAnswerRight) break;
     counter += 1;
