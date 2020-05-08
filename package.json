@@ -1,11 +1,10 @@
 {
   "name": "frontend-project-lvl1",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Личный проект «Игры разума» от Hexlet",
   "type": "module",
   "main": "src/index.js",
   "bin": {
-    "brain-games": "bin/brain-games.js",
     "brain-even": "bin/brain-even.js",
     "brain-calc": "bin/brain-calc.js",
     "brain-gcd": "bin/brain-gcd.js",
@@ -19,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/f1eeman/frontend-project-lvl1.git"
   },
-  "keywords" : [
+  "keywords": [
     "brain-games",
     "brain-math",
     "brain-calc",

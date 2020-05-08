@@ -9,8 +9,8 @@ export default () => {
   const operators = ['+', '-', '*'];
 
   for (let i = 0; i < 3; i += 1) {
-    const firstNum = getRandomNum(100);
-    const secondNum = getRandomNum(100);
+    const firstNum = getRandomNum();
+    const secondNum = getRandomNum();
     getQuestion(firstNum, operators[i], secondNum);
     let correctAnswer;
     switch (operators[i]) {

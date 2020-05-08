@@ -19,8 +19,8 @@ export default () => {
   console.log('Find the greatest common divisor of given numbers.');
   let counter = 0;
   while (counter < 3) {
-    const firstNumber = getRandomNum(100);
-    const secondNumber = getRandomNum(100);
+    const firstNumber = getRandomNum();
+    const secondNumber = getRandomNum();
     const correctAnswer = getGreatestCommonDivisor(firstNumber, secondNumber);
     getQuestion(firstNumber, secondNumber);
     const userAnswer = getUserAnswer();

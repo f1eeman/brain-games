@@ -7,7 +7,7 @@ export default () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no"');
   let counter = 0;
   while (counter < 3) {
-    const randomNum = getRandomNum(100);
+    const randomNum = getRandomNum();
     getQuestion(randomNum);
     const userAnswer = getUserAnswer();
     const isEven = randomNum % 2 === 0;

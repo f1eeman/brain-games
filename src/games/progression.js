@@ -12,14 +12,20 @@ const getArithmeticProg = (begin, difference, lengthProg) => {
   return arr;
 };
 
+
 export default () => {
+  const stepsProgression = 3;
+  const lengthProgression = 10;
+  const rounds = 3;
+  const minIndex = 0;
+  const maxIndex = 9;
   const userName = showGreeting();
   console.log('What number is missing in the progression?');
   let counter = 0;
-  while (counter < 3) {
-    const randomNum = getRandomNum(100);
-    const array = getArithmeticProg(randomNum, 2, 10);
-    const index = getRandomNum(9);
+  while (counter < rounds) {
+    const randomNum = getRandomNum();
+    const array = getArithmeticProg(randomNum, stepsProgression, lengthProgression);
+    const index = getRandomNum(minIndex, maxIndex);
     const correctAnswer = array[index];
     const editArray = [...array];
     editArray[index] = '..';
@@ -30,5 +36,5 @@ export default () => {
     if (!isUserAnswerRight) break;
     counter += 1;
   }
-  if (counter === 3) getCongrats(userName);
+  if (counter === rounds) getCongrats(userName);
 };
