@@ -1,33 +1,6 @@
-import {
-  getRandomNum, showGreeting, getUserAnswer, getQuestion, checkUserAnswer, getCongrats,
-} from '../index.js';
+import { game } from '../index.js';
 
-export default () => {
-  const userName = showGreeting();
-  console.log('What is the result of the expression?');
-  let counter = 0;
-  const operators = ['+', '-', '*'];
+const rules = 'What is the result of the expression?';
+const typeGame = 'calc';
 
-  for (let i = 0; i < 3; i += 1) {
-    const firstNum = getRandomNum();
-    const secondNum = getRandomNum();
-    getQuestion(firstNum, operators[i], secondNum);
-    let correctAnswer;
-    switch (operators[i]) {
-      case '+':
-        correctAnswer = firstNum + secondNum;
-        break;
-      case '-':
-        correctAnswer = firstNum - secondNum;
-        break;
-      default:
-        correctAnswer = firstNum * secondNum;
-        break;
-    }
-    const userAnswer = getUserAnswer();
-    const isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, true);
-    if (!isUserAnswerRight) break;
-    counter += 1;
-  }
-  if (counter === 3) getCongrats(userName);
-};
+export default () => game(rules, null, typeGame);

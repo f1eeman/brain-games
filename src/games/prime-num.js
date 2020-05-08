@@ -1,7 +1,6 @@
-import {
-  getRandomNum, showGreeting, getUserAnswer, getQuestion, checkUserAnswer, getCongrats,
-} from '../index.js';
+import { game } from '../index.js';
 
+const rules = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 const isPrime = (num) => {
   if (typeof (num) !== 'number') {
     return NaN;
@@ -15,18 +14,4 @@ const isPrime = (num) => {
   return true;
 };
 
-export default () => {
-  const userName = showGreeting();
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no"');
-  let counter = 0;
-  while (counter < 3) {
-    const randomNum = getRandomNum();
-    getQuestion(randomNum);
-    const userAnswer = getUserAnswer();
-    const correctAnswer = isPrime(randomNum) ? 'yes' : 'no';
-    const isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, false);
-    if (!isUserAnswerRight) break;
-    counter += 1;
-  }
-  if (counter === 3) getCongrats(userName);
-};
+export default () => game(rules, isPrime);

@@ -1,7 +1,7 @@
-import {
-  getRandomNum, showGreeting, getUserAnswer, getQuestion, checkUserAnswer, getCongrats,
-} from '../index.js';
+import { game } from '../index.js';
 
+const rules = 'Find the greatest common divisor of given numbers.';
+const typeGame = 'gcd';
 const getGreatestCommonDivisor = (firstNum, secondNum) => {
   const smallerNum = firstNum > secondNum ? secondNum : firstNum;
   if ((firstNum % smallerNum === 0) && (secondNum % smallerNum === 0)) {
@@ -14,19 +14,4 @@ const getGreatestCommonDivisor = (firstNum, secondNum) => {
   return gcd;
 };
 
-export default () => {
-  const userName = showGreeting();
-  console.log('Find the greatest common divisor of given numbers.');
-  let counter = 0;
-  while (counter < 3) {
-    const firstNumber = getRandomNum();
-    const secondNumber = getRandomNum();
-    const correctAnswer = getGreatestCommonDivisor(firstNumber, secondNumber);
-    getQuestion(firstNumber, secondNumber);
-    const userAnswer = getUserAnswer();
-    const isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, true);
-    if (!isUserAnswerRight) break;
-    counter += 1;
-  }
-  if (counter === 3) getCongrats(userName);
-};
+export default () => game(rules, getGreatestCommonDivisor, typeGame);
