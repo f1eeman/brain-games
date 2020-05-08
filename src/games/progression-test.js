@@ -1,6 +1,7 @@
 import { game } from '../index.js';
 
 const rules = 'What number is missing in the progression?';
+const rounds = 3;
 const getArithmeticProg = (begin, difference, lengthProg) => {
   const arr = [];
   let value = begin;
@@ -11,4 +12,4 @@ const getArithmeticProg = (begin, difference, lengthProg) => {
   return arr;
 };
 
-export default () => game(rules, getArithmeticProg);
+export default () => game(rules, getArithmeticProg, rounds, false, true);

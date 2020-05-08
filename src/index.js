@@ -45,16 +45,50 @@ export const getCongrats = (userName) => {
 
 export const showRulesGame = (rules) => console.log(rules);
 
-export const game = (rules, gameFunc, rounds = 3) => {
+export const game = (rules, gameFunc, rounds = 3, gcd = false, prog = false) => {
   const userName = showGreeting();
   showRulesGame(rules);
   let counter = 0;
   while (counter < rounds) {
     const randomNum = getRandomNum();
-    getQuestion(randomNum);
+    const secondRandomNum = getRandomNum();
+
+    const stepsProgression = 2;
+    const lengthProgression = 10;
+    const minIndex = 0;
+    const maxIndex = 9;
+    const array = gameFunc(randomNum, stepsProgression, lengthProgression);
+    const index = getRandomNum(minIndex, maxIndex);
+    const editArray = [...array];
+    editArray[index] = '..';
+    const str = editArray.join(' ');
+
+    if (gcd) {
+      getQuestion(randomNum, secondRandomNum);
+    } else if (prog) {
+      getQuestion(str);
+    } else {
+      getQuestion(randomNum);
+    }
+
     const userAnswer = getUserAnswer();
-    const correctAnswer = gameFunc(randomNum) ? 'yes' : 'no';
-    const isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, false);
+
+    let correctAnswer;
+    if (gcd) {
+      correctAnswer = gameFunc(randomNum, secondRandomNum);
+    } else if (prog) {
+      correctAnswer = array[index];
+    } else {
+      correctAnswer = gameFunc(randomNum) ? 'yes' : 'no';
+    }
+
+    let isUserAnswerRight;
+    if (gcd || prog) {
+      isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, true);
+    } else {
+      isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, false);
+    }
+
     if (!isUserAnswerRight) break;
     counter += 1;
   }
