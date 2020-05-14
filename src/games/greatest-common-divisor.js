@@ -1,7 +1,9 @@
-import { game } from '../index.js';
+import { getRandomNum, game } from '../index.js';
 
 const rules = 'Find the greatest common divisor of given numbers.';
-const typeGame = 'gcd';
+const countsQuests = 3;
+
+
 const getGreatestCommonDivisor = (firstNum, secondNum) => {
   const smallerNum = firstNum > secondNum ? secondNum : firstNum;
   if ((firstNum % smallerNum === 0) && (secondNum % smallerNum === 0)) {
@@ -14,4 +16,19 @@ const getGreatestCommonDivisor = (firstNum, secondNum) => {
   return gcd;
 };
 
-export default () => game(rules, getGreatestCommonDivisor, typeGame);
+const getQuests = (count) => {
+  const result = [];
+  for (let i = 0; i < count; i += 1) {
+    result[i] = [];
+    const firstNum = getRandomNum();
+    const secondNum = getRandomNum();
+    const question = `${firstNum} ${secondNum}`;
+    const anwser = getGreatestCommonDivisor(firstNum, secondNum);
+    result[i].push(question, anwser.toString());
+  }
+  return result;
+};
+
+const questionnaire = getQuests(countsQuests);
+
+export default () => game(rules, questionnaire);

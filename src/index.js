@@ -15,90 +15,69 @@ export const showGreeting = () => {
 export const getUserAnswer = () => readlineSync.question('Your answer: ');
 
 
-export const getQuestion = (firstAtr, secondAtr, thirdAtr) => {
-  if (firstAtr && secondAtr && thirdAtr) {
-    console.log(`Question: ${firstAtr} ${secondAtr} ${thirdAtr}`);
-  } else if (firstAtr && secondAtr && !thirdAtr) {
-    console.log(`Question: ${firstAtr} ${secondAtr}`);
-  } else {
-    console.log(`Question: ${firstAtr}`);
-  }
+export const showQuestion = (question) => {
+  console.log(`Question: ${question}`);
 };
 
 export const getErrorMessage = (userName, userAnswer, correctAnswer) => {
   console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". \n Let's try again, ${userName}!`);
 };
 
-export const checkUserAnswer = (userName, userAnswer, correctAnswer, toNumber) => {
-  const editUserAnswer = toNumber ? Number(userAnswer) : userAnswer.toLowerCase();
-  if (editUserAnswer === correctAnswer) {
-    console.log('Correct!');
+export const isAnswerRight = (userAnswer, correctAnswer) => {
+  if (userAnswer.toLowerCase() === correctAnswer) {
     return true;
   }
-  getErrorMessage(userName, userAnswer, correctAnswer);
   return false;
+};
+
+export const getMessage = () => {
+  console.log('Correct!');
 };
 
 export const getCongrats = (userName) => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-export const showRulesGame = (rules) => console.log(rules);
+export const showRulesGame = (rules) => {
+  console.log(rules);
+};
 
-export const game = (rules, gameFunc, typeGame = 'standart', rounds = 3) => {
+const getParsedArr = (arr) => {
+  const questions = [];
+  const correctAnswers = [];
+  const steps = arr.length;
+  for (let j = 0; j < steps; j += 1) {
+    const [question, correctAnswer] = arr[j];
+    questions.push(question);
+    correctAnswers.push(correctAnswer);
+  }
+  return [questions, correctAnswers];
+};
+
+export const game = (rules, questionnare) => {
   const userName = showGreeting();
   showRulesGame(rules);
+
   let counter = 0;
+  const rounds = questionnare.length;
 
-  while (counter < rounds) {
-    const firstRandomNum = getRandomNum();
-    const secondRandomNum = getRandomNum();
+  const [questions, correctAnswers] = getParsedArr(questionnare);
 
-    let correctAnswer;
-    if (typeGame === 'calc') {
-      const operators = ['+', '-', '*'];
-      getQuestion(firstRandomNum, operators[counter], secondRandomNum);
-      switch (operators[counter]) {
-        case '+':
-          correctAnswer = firstRandomNum + secondRandomNum;
-          break;
-        case '-':
-          correctAnswer = firstRandomNum - secondRandomNum;
-          break;
-        default:
-          correctAnswer = firstRandomNum * secondRandomNum;
-          break;
-      }
-    } else if (typeGame === 'gcd') {
-      getQuestion(firstRandomNum, secondRandomNum);
-      correctAnswer = gameFunc(firstRandomNum, secondRandomNum);
-    } else if (typeGame === 'prog') {
-      const stepsProgression = 2;
-      const lengthProgression = 10;
-      const minIndex = 0;
-      const maxIndex = 9;
-      const array = gameFunc(firstRandomNum, stepsProgression, lengthProgression);
-      const index = getRandomNum(minIndex, maxIndex);
-      const editArray = [...array];
-      editArray[index] = '..';
-      const str = editArray.join(' ');
-      getQuestion(str);
-      correctAnswer = array[index];
-    } else {
-      getQuestion(firstRandomNum);
-      correctAnswer = gameFunc(firstRandomNum) ? 'yes' : 'no';
-    }
-
+  for (let i = 0; i < rounds; i += 1) {
+    const question = questions[i];
+    const correctAnswer = correctAnswers[i];
+    showQuestion(question);
+    const correctResponse = correctAnswer;
     const userAnswer = getUserAnswer();
 
-    let isUserAnswerRight;
-    if (typeGame === 'standart') {
-      isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, false);
+    const isUserAnswerRight = isAnswerRight(userAnswer, correctResponse);
+    if (isUserAnswerRight) {
+      getMessage();
     } else {
-      isUserAnswerRight = checkUserAnswer(userName, userAnswer, correctAnswer, true);
+      getErrorMessage(userName, userAnswer, correctResponse);
+      break;
     }
 
-    if (!isUserAnswerRight) break;
     counter += 1;
   }
   if (counter === rounds) getCongrats(userName);
