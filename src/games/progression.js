@@ -1,30 +1,24 @@
 import { getRandomNum, game } from '../index.js';
 
-const getArithmeticProg = (start, indexHiddEl, diff, length, message) => {
-  if (indexHiddEl < 0 || indexHiddEl >= length) {
-    return message;
-  }
+const description = 'What number is missing in the progression?';
+const countsValues = 3;
+const minIndex = 0;
+const maxIndex = 9;
+const lengthProg = 10;
+const diffProg = 2;
 
+const getArithmeticProg = (start, indexHiddEl, diff, length) => {
   const arr = [];
   const bracket = '..';
-  let value = start;
-  for (let i = 0; i < length; i += 1) {
-    if (i === indexHiddEl) {
-      arr.push(bracket);
-    } else {
-      arr.push(value);
-    }
-    value += diff;
-  }
-  return arr.join(' ');
-};
 
-const getHiddenEl = (prog, indexHiddEl, diff) => {
-  const arr = prog.split(' ');
-  const prevValue = Number(arr[indexHiddEl - 1]);
-  const nextValue = Number(arr[indexHiddEl + 1]);
-  const hiddEl = indexHiddEl ? prevValue + diff : nextValue - diff;
-  return hiddEl.toString();
+  for (let i = 0; i < length; i += 1) {
+    const element = start + (diff * i);
+    arr.push(element);
+  }
+
+  const hiddEl = arr[indexHiddEl].toString();
+  arr[indexHiddEl] = bracket;
+  return [arr.join(' '), hiddEl];
 };
 
 const getNumbers = (count, min = 1, max = 100) => {
@@ -38,29 +32,18 @@ const getNumbers = (count, min = 1, max = 100) => {
   return result;
 };
 
-const description = 'What number is missing in the progression?';
-const errMess = 'ОШИБКА! \n Индекс скрытого элемента выходит за рамки арифметической прогресии.';
-const countsValues = 3;
-const countsQuests = 3;
-const minIndex = 0;
-const maxIndex = 9;
-const lengthProg = 10;
-const diffProg = 2;
-
 const indexesHidd = getNumbers(countsValues, minIndex, maxIndex);
-const startVal = getNumbers(countsValues);
+const startValues = getNumbers(countsValues);
 
-const getQuests = (counts, indexes, beginValues, diff, length, message) => {
+const getQuests = (counts, indexes, beginValues, diff, length) => {
   const result = [];
   for (let i = 0; i < counts; i += 1) {
-    result[i] = [];
-    const question = getArithmeticProg(beginValues[i], indexes[i], diff, length, message);
-    const anwser = getHiddenEl(question, indexes[i], diff);
-    result[i].push(question, anwser);
+    const [question, anwser] = getArithmeticProg(beginValues[i], indexes[i], diff, length);
+    result.push([question, anwser]);
   }
   return result;
 };
 
-const questionnaire = getQuests(countsQuests, indexesHidd, startVal, diffProg, lengthProg, errMess);
+const questionnaire = getQuests(countsValues, indexesHidd, startValues, diffProg, lengthProg);
 
 export default () => game(description, questionnaire);
