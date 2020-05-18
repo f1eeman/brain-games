@@ -19,12 +19,11 @@ const getGreatestCommonDivisor = (firstNum, secondNum) => {
 const getQuests = (count) => {
   const result = [];
   for (let i = 0; i < count; i += 1) {
-    result[i] = [];
-    const firstNum = getRandomNum(1, 20);
-    const secondNum = getRandomNum(1, 20);
+    const firstNum = getRandomNum();
+    const secondNum = getRandomNum();
     const question = `${firstNum} ${secondNum}`;
     const anwser = getGreatestCommonDivisor(firstNum, secondNum);
-    result[i].push(question, anwser.toString());
+    result.push([question, anwser]);
   }
   return result;
 };

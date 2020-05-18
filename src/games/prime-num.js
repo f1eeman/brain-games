@@ -5,10 +5,6 @@ const countsQuests = 3;
 
 
 const isPrime = (num) => {
-  if (typeof (num) !== 'number') {
-    return NaN;
-  }
-
   if (num < 2) {
     return false;
   }
@@ -22,13 +18,11 @@ const isPrime = (num) => {
   return true;
 };
 
-const getAnswer = (num) => (isPrime(num) ? 'yes' : 'no');
-
 const getQuests = (count) => {
   const result = [];
   for (let i = 0; i < count; i += 1) {
     const question = getRandomNum();
-    const anwser = getAnswer(question);
+    const anwser = isPrime(question) ? 'yes' : 'no';
     result.push([question, anwser]);
   }
   return result;

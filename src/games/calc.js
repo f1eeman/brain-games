@@ -3,43 +3,41 @@ import { getRandomNum, game } from '../index.js';
 const description = 'What is the result of the expression?';
 const countsQuests = 3;
 
-const getQuestion = (firstNum, secondNum) => {
+const getOperator = () => {
   const operators = ['+', '-', '*'];
   const min = 0;
-  const max = 2;
+  const max = operators.length - 1;
   const index = getRandomNum(min, max);
-  const result = `${firstNum} ${operators[index]} ${secondNum}`;
-  return result;
+  return operators[index];
 };
 
-const getAnswer = (question) => {
-  const [firstNum, operator, secondNum] = question.split(' ');
-  let answer;
+const getResultOfCalc = (firstNum, operator, secondNum) => {
+  let result;
   switch (operator) {
     case '+':
-      answer = Number(firstNum) + Number(secondNum);
+      result = firstNum + secondNum;
       break;
     case '-':
-      answer = Number(firstNum) - Number(secondNum);
+      result = firstNum - secondNum;
       break;
     case '*':
-      answer = Number(firstNum) * Number(secondNum);
+      result = firstNum * secondNum;
       break;
     default:
       break;
   }
-  return answer.toString();
+  return result;
 };
 
 const getQuests = (count) => {
   const result = [];
   for (let i = 0; i < count; i += 1) {
-    result[i] = [];
     const firstNum = getRandomNum();
     const secondNum = getRandomNum();
-    const question = getQuestion(firstNum, secondNum);
-    const anwser = getAnswer(question);
-    result[i].push(question, anwser);
+    const operator = getOperator();
+    const question = `${firstNum} ${operator} ${secondNum}`;
+    const anwser = getResultOfCalc(firstNum, operator, secondNum);
+    result.push([question, anwser]);
   }
   return result;
 };

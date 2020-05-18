@@ -36,7 +36,7 @@ export const game = (description, questionnaire) => {
 
   for (let i = 0; i < realRounds; i += 1) {
     const question = questions[i];
-    const correctAnswer = correctAnswers[i];
+    const correctAnswer = correctAnswers[i].toString();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 

@@ -7,7 +7,7 @@ const maxIndex = 9;
 const lengthProg = 10;
 const diffProg = 2;
 
-const getArithmeticProg = (start, indexHiddEl, diff, length) => {
+const getProgElements = (start, indexHiddEl, diff, length) => {
   const arr = [];
   const bracket = '..';
 
@@ -16,7 +16,7 @@ const getArithmeticProg = (start, indexHiddEl, diff, length) => {
     arr.push(element);
   }
 
-  const hiddEl = arr[indexHiddEl].toString();
+  const hiddEl = arr[indexHiddEl];
   arr[indexHiddEl] = bracket;
   return [arr.join(' '), hiddEl];
 };
@@ -38,8 +38,8 @@ const startValues = getNumbers(countsValues);
 const getQuests = (counts, indexes, beginValues, diff, length) => {
   const result = [];
   for (let i = 0; i < counts; i += 1) {
-    const [question, anwser] = getArithmeticProg(beginValues[i], indexes[i], diff, length);
-    result.push([question, anwser]);
+    const [question, answer] = getProgElements(beginValues[i], indexes[i], diff, length);
+    result.push([question, answer]);
   }
   return result;
 };

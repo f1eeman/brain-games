@@ -5,15 +5,12 @@ const countsQuests = 3;
 
 const isEven = (num) => num % 2 === 0;
 
-const getAnswer = (num) => (isEven(num) ? 'yes' : 'no');
-
 const getQuests = (count) => {
   const result = [];
   for (let i = 0; i < count; i += 1) {
-    result[i] = [];
     const question = getRandomNum();
-    const anwser = getAnswer(question);
-    result[i].push(question, anwser);
+    const anwser = isEven(question) ? 'yes' : 'no';
+    result.push([question, anwser]);
   }
   return result;
 };
