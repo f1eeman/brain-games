@@ -1,6 +1,6 @@
 import { getRandomNum, game } from '../index.js';
 
-const rules = 'Answer "yes" if given number is prime. Otherwise answer "no"';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 const countsQuests = 3;
 
 
@@ -27,14 +27,13 @@ const getAnswer = (num) => (isPrime(num) ? 'yes' : 'no');
 const getQuests = (count) => {
   const result = [];
   for (let i = 0; i < count; i += 1) {
-    result[i] = [];
     const question = getRandomNum();
     const anwser = getAnswer(question);
-    result[i].push(question, anwser);
+    result.push([question, anwser]);
   }
   return result;
 };
 
 const questionnaire = getQuests(countsQuests);
 
-export default () => game(rules, questionnaire);
+export default () => game(description, questionnaire);

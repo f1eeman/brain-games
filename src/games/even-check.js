@@ -1,6 +1,6 @@
 import { getRandomNum, game } from '../index.js';
 
-const rules = 'Answer "yes" if the number is even, otherwise answer "no"';
+const description = 'Answer "yes" if the number is even, otherwise answer "no"';
 const countsQuests = 3;
 
 const isEven = (num) => num % 2 === 0;
@@ -20,4 +20,4 @@ const getQuests = (count) => {
 
 const questionnaire = getQuests(countsQuests);
 
-export default () => game(rules, questionnaire);
+export default () => game(description, questionnaire);

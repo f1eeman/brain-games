@@ -38,7 +38,7 @@ const getNumbers = (count, min = 1, max = 100) => {
   return result;
 };
 
-const rules = 'What number is missing in the progression?';
+const description = 'What number is missing in the progression?';
 const errMess = 'ОШИБКА! \n Индекс скрытого элемента выходит за рамки арифметической прогресии.';
 const countsValues = 3;
 const countsQuests = 3;
@@ -63,4 +63,4 @@ const getQuests = (counts, indexes, beginValues, diff, length, message) => {
 
 const questionnaire = getQuests(countsQuests, indexesHidd, startVal, diffProg, lengthProg, errMess);
 
-export default () => game(rules, questionnaire);
+export default () => game(description, questionnaire);

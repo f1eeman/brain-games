@@ -1,6 +1,6 @@
 import { getRandomNum, game } from '../index.js';
 
-const rules = 'What is the result of the expression?';
+const description = 'What is the result of the expression?';
 const countsQuests = 3;
 
 const getQuestion = (firstNum, secondNum) => {
@@ -46,4 +46,4 @@ const getQuests = (count) => {
 
 const questionnaire = getQuests(countsQuests);
 
-export default () => game(rules, questionnaire);
+export default () => game(description, questionnaire);

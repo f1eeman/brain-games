@@ -5,41 +5,11 @@ export const getRandomNum = (min = 1, max = 100) => {
   return Math.floor(result);
 };
 
-export const showGreeting = () => {
+const showGreeting = () => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May i have your name? ');
   console.log(`Hello, ${userName}!`);
   return userName;
-};
-
-export const getUserAnswer = () => readlineSync.question('Your answer: ');
-
-
-export const showQuestion = (question) => {
-  console.log(`Question: ${question}`);
-};
-
-export const getErrorMessage = (userName, userAnswer, correctAnswer) => {
-  console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". \n Let's try again, ${userName}!`);
-};
-
-export const isAnswerRight = (userAnswer, correctAnswer) => {
-  if (userAnswer.toLowerCase() === correctAnswer) {
-    return true;
-  }
-  return false;
-};
-
-export const getMessage = () => {
-  console.log('Correct!');
-};
-
-export const getCongrats = (userName) => {
-  console.log(`Congratulations, ${userName}!`);
-};
-
-export const showRulesGame = (rules) => {
-  console.log(rules);
 };
 
 const getParsedArr = (arr) => {
@@ -54,31 +24,31 @@ const getParsedArr = (arr) => {
   return [questions, correctAnswers];
 };
 
-export const game = (rules, questionnare) => {
+export const game = (description, questionnaire) => {
   const userName = showGreeting();
-  showRulesGame(rules);
+  console.log(description);
 
   let counter = 0;
-  const rounds = questionnare.length;
+  const defRounds = 3;
+  const realRounds = questionnaire.length > defRounds ? defRounds : questionnaire.length;
 
-  const [questions, correctAnswers] = getParsedArr(questionnare);
+  const [questions, correctAnswers] = getParsedArr(questionnaire);
 
-  for (let i = 0; i < rounds; i += 1) {
+  for (let i = 0; i < realRounds; i += 1) {
     const question = questions[i];
     const correctAnswer = correctAnswers[i];
-    showQuestion(question);
-    const correctResponse = correctAnswer;
-    const userAnswer = getUserAnswer();
+    console.log(`Question: ${question}`);
+    const userAnswer = readlineSync.question('Your answer: ');
 
-    const isUserAnswerRight = isAnswerRight(userAnswer, correctResponse);
+    const isUserAnswerRight = userAnswer.toLowerCase() === correctAnswer;
+
     if (isUserAnswerRight) {
-      getMessage();
+      console.log('Correct!');
+      counter += 1;
     } else {
-      getErrorMessage(userName, userAnswer, correctResponse);
+      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". \n Let's try again, ${userName}!`);
       break;
     }
-
-    counter += 1;
   }
-  if (counter === rounds) getCongrats(userName);
+  if (counter === realRounds) console.log(`Congratulations, ${userName}!`);
 };
