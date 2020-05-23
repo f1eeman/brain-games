@@ -1,7 +1,6 @@
-import { getRandomNum, game } from '../index.js';
+import { getRandomNum, roundsCount, runGame } from '../index.js';
 
 const description = 'Answer "yes" if the number is even, otherwise answer "no"';
-const countsQuests = 3;
 
 const isEven = (num) => num % 2 === 0;
 
@@ -15,6 +14,6 @@ const getQuests = (count) => {
   return result;
 };
 
-const questionnaire = getQuests(countsQuests);
+const quests = getQuests(roundsCount);
 
-export default () => game(description, questionnaire);
+export default () => runGame(description, quests);

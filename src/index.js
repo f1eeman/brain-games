@@ -5,50 +5,23 @@ export const getRandomNum = (min = 1, max = 100) => {
   return Math.floor(result);
 };
 
-const showGreeting = () => {
+export const roundsCount = 3;
+
+export const runGame = (description, quests) => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May i have your name? ');
   console.log(`Hello, ${userName}!`);
-  return userName;
-};
-
-const getParsedArr = (arr) => {
-  const questions = [];
-  const correctAnswers = [];
-  const steps = arr.length;
-  for (let j = 0; j < steps; j += 1) {
-    const [question, correctAnswer] = arr[j];
-    questions.push(question);
-    correctAnswers.push(correctAnswer);
-  }
-  return [questions, correctAnswers];
-};
-
-export const game = (description, questionnaire) => {
-  const userName = showGreeting();
   console.log(description);
 
-  let counter = 0;
-  const defRounds = 3;
-  const realRounds = questionnaire.length > defRounds ? defRounds : questionnaire.length;
-
-  const [questions, correctAnswers] = getParsedArr(questionnaire);
-
-  for (let i = 0; i < realRounds; i += 1) {
-    const question = questions[i];
-    const correctAnswer = correctAnswers[i].toString();
+  for (let i = 0; i < roundsCount; i += 1) {
+    const [question, correctAnswer] = quests[i];
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
-
-    const isUserAnswerRight = userAnswer.toLowerCase() === correctAnswer;
-
-    if (isUserAnswerRight) {
-      console.log('Correct!');
-      counter += 1;
-    } else {
-      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". \n Let's try again, ${userName}!`);
-      break;
-    }
+    const isUserAnswerRight = userAnswer.toLowerCase() === correctAnswer.toString();
+    const gameOverMessage = `"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". \n Let's try again, ${userName}!`;
+    const resultMessage = isUserAnswerRight ? 'Correct!' : gameOverMessage;
+    console.log(resultMessage);
+    if (!isUserAnswerRight) return;
   }
-  if (counter === realRounds) console.log(`Congratulations, ${userName}!`);
+  console.log(`Congratulations, ${userName}!`);
 };

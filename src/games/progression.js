@@ -1,49 +1,33 @@
-import { getRandomNum, game } from '../index.js';
+import { getRandomNum, roundsCount, runGame } from '../index.js';
 
 const description = 'What number is missing in the progression?';
-const countsValues = 3;
 const minIndex = 0;
 const maxIndex = 9;
-const lengthProg = 10;
-const diffProg = 2;
+const lengthProgression = 10;
+const diffProgression = 2;
 
-const getProgElements = (start, indexHiddEl, diff, length) => {
+const getProgression = (startValue, diff, length, hiddenIndexElement) => {
   const arr = [];
   const bracket = '..';
-
   for (let i = 0; i < length; i += 1) {
-    const element = start + (diff * i);
+    const element = (i === hiddenIndexElement ? bracket : startValue + (diff * i));
     arr.push(element);
   }
-
-  const hiddEl = arr[indexHiddEl];
-  arr[indexHiddEl] = bracket;
-  return [arr.join(' '), hiddEl];
+  return arr.join(' ');
 };
 
-const getNumbers = (count, min = 1, max = 100) => {
-  let counter = count;
+const getQuests = (count, diff, length) => {
   const result = [];
-  while (counter !== 0) {
-    const num = getRandomNum(min, max);
-    result.push(num);
-    counter -= 1;
-  }
-  return result;
-};
-
-const indexesHidd = getNumbers(countsValues, minIndex, maxIndex);
-const startValues = getNumbers(countsValues);
-
-const getQuests = (counts, indexes, beginValues, diff, length) => {
-  const result = [];
-  for (let i = 0; i < counts; i += 1) {
-    const [question, answer] = getProgElements(beginValues[i], indexes[i], diff, length);
+  for (let i = 0; i < count; i += 1) {
+    const beginValue = getRandomNum();
+    const hiddenIndexElement = getRandomNum(minIndex, maxIndex);
+    const question = getProgression(beginValue, diff, length, hiddenIndexElement);
+    const answer = beginValue + (diff * hiddenIndexElement);
     result.push([question, answer]);
   }
   return result;
 };
 
-const questionnaire = getQuests(countsValues, indexesHidd, startValues, diffProg, lengthProg);
+const quests = getQuests(roundsCount, diffProgression, lengthProgression);
 
-export default () => game(description, questionnaire);
+export default () => runGame(description, quests);

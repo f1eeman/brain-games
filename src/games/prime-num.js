@@ -1,8 +1,6 @@
-import { getRandomNum, game } from '../index.js';
+import { getRandomNum, roundsCount, runGame } from '../index.js';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no"';
-const countsQuests = 3;
-
 
 const isPrime = (num) => {
   if (num < 2) {
@@ -28,6 +26,6 @@ const getQuests = (count) => {
   return result;
 };
 
-const questionnaire = getQuests(countsQuests);
+const quests = getQuests(roundsCount);
 
-export default () => game(description, questionnaire);
+export default () => runGame(description, quests);

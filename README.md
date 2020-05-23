@@ -1,23 +1,54 @@
-# frontend-project-lvl1
+# "Brain games" (frontend-project-lvl1)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f7468856ebb70ff0f2a4/maintainability)](https://codeclimate.com/github/f1eeman/frontend-project-lvl1/maintainability)
 ![Node CI](https://github.com/f1eeman/frontend-project-lvl1/workflows/Node%20CI/badge.svg)
 
-How to install & how first game works?
+## Description
+"Brain Games" is a set of five console games, built on the principle of popular mobile applications to upgrade brain power. There are questions in every game needed to be answered correctly. The game is considered to be over after three questions answered correctly. In case of wrong answers the game is completed and the user’s being offered to play it again. The games are as follows:
 
-[![asciicast](https://asciinema.org/a/KSjPo4hr7H8P8MY1y1tBtMMxm.svg)](https://asciinema.org/a/KSjPo4hr7H8P8MY1y1tBtMMxm?theme=monokai)
+1. Calculator. Arithmetic expressions to be calculated.
+2. Progression. Search for missing numbers in a sequence of numbers.
+3. Determination of an even number.
+4. Determination of the greatest common divisor.
+5. Determination of a prime number.
 
-How second game works?
+## Installation
+Using npm:
+```shell
+$ npm link
+```
 
-[![asciicast](https://asciinema.org/a/Pr1d4jPPaQAk1FtrelB7rQ6cz.svg)](https://asciinema.org/a/Pr1d4jPPaQAk1FtrelB7rQ6cz?theme=solarized-dark)
+## Starting the game "Calculator"
+Using npm:
+```shell
+$ brain-calc
+```
+[![asciicast](https://asciinema.org/a/lgO6xWzF4ACP4Mvru7R0N32Bu.svg)](https://asciinema.org/a/lgO6xWzF4ACP4Mvru7R0N32Bu)
 
-How third game works?
+## Starting the game "Progression"
+Using npm:
+```shell
+$ brain-math
+```
+[![asciicast](https://asciinema.org/a/zHp2glX1fIQrY98VvdDjgC7kq.svg)](https://asciinema.org/a/zHp2glX1fIQrY98VvdDjgC7kq)
 
-[![asciicast](https://asciinema.org/a/3Ycrxzdhi4izUFoekF04Cz3LQ.svg)](https://asciinema.org/a/3Ycrxzdhi4izUFoekF04Cz3LQ)
+## "Determination of an even number" game start.
+Using npm:
+```shell
+$ brain-even
+```
+[![asciicast](https://asciinema.org/a/OMHOAbyNerZBEche0g9sGWJ8s.svg)](https://asciinema.org/a/OMHOAbyNerZBEche0g9sGWJ8s)
 
-How fourth game works?
+## "Determination of the greatest common divisor" game start.
+Using npm:
+```shell
+$ brain-gcd
+```
+[![asciicast](https://asciinema.org/a/zxtnQfW7NYdg8hz1hshBCBdf5.svg)](https://asciinema.org/a/zxtnQfW7NYdg8hz1hshBCBdf5)
 
-[![asciicast](https://asciinema.org/a/znhDkZUZFbxqnYWkt6QkPbzqV.svg)](https://asciinema.org/a/znhDkZUZFbxqnYWkt6QkPbzqV)
+## "Determination of a prime number" game start.
+Using npm:
+```shell
+$ brain-prime
+```
 
-How fifth game works?
-
-[![asciicast](https://asciinema.org/a/xzF17KVxPhhPOXTEJTG9X6ebu.svg)](https://asciinema.org/a/xzF17KVxPhhPOXTEJTG9X6ebu)
+[![asciicast](https://asciinema.org/a/VK2vg1FGC4oNsmAmNcydZRxo1.svg)](https://asciinema.org/a/VK2vg1FGC4oNsmAmNcydZRxo1)
