@@ -10,7 +10,8 @@ const getProgression = (startValue, diff, length, hiddenIndexElement) => {
   const arr = [];
   const bracket = '..';
   for (let i = 0; i < length; i += 1) {
-    const element = (i !== hiddenIndexElement ? startValue + (diff * i) : bracket);
+    const value = startValue + (diff * i);
+    const element = (i === hiddenIndexElement ? bracket : value);
     arr.push(element);
   }
   return arr.join(' ');
