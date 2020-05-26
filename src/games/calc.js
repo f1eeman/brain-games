@@ -1,4 +1,5 @@
-import { getRandomNum, roundsCount, runGame } from '../index.js';
+import { roundsCount, runGame } from '../index.js';
+import getRandomNum from '../general-functions.js';
 
 const description = 'What is the result of the expression?';
 const minNum = 0;
@@ -12,7 +13,7 @@ const getOperator = () => {
   return operators[index];
 };
 
-const calculateValueOfExpression = (operator, firstNum, secondNum) => {
+const calculate = (operator, firstNum, secondNum) => {
   let result;
   switch (operator) {
     case '+':
@@ -37,7 +38,7 @@ const getQuests = (count) => {
     const secondNum = getRandomNum(minNum, maxNum);
     const operator = getOperator();
     const question = `${firstNum} ${operator} ${secondNum}`;
-    const anwser = calculateValueOfExpression(operator, firstNum, secondNum);
+    const anwser = (calculate(operator, firstNum, secondNum)).toString();
     result.push([question, anwser]);
   }
   return result;
