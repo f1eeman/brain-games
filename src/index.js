@@ -12,11 +12,12 @@ export const runGame = (description, quests) => {
     const [question, correctAnswer] = quests[i];
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    const isUserAnswerRight = userAnswer === correctAnswer;
-    const gameOverMessage = `"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". \n Let's try again, ${userName}!`;
-    const resultMessage = isUserAnswerRight ? 'Correct!' : gameOverMessage;
-    console.log(resultMessage);
-    if (!isUserAnswerRight) return;
+    if (userAnswer === correctAnswer) {
+      console.log('Correct!');
+    } else {
+      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}". \n Let's try again, ${userName}!`);
+      return;
+    }
   }
   console.log(`Congratulations, ${userName}!`);
 };

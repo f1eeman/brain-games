@@ -3,12 +3,12 @@ import getRandomNum from '../general-functions.js';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
-const getGreatestCommonDivisor = (a, b) => {
-  if (b === 0) {
-    return a;
+const getGreatestCommonDivisor = (firstNum, secondNum) => {
+  if (secondNum === 0) {
+    return firstNum;
   }
 
-  return getGreatestCommonDivisor(b, a % b);
+  return getGreatestCommonDivisor(secondNum, firstNum % secondNum);
 };
 
 const getQuests = (count) => {
