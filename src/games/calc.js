@@ -1,5 +1,5 @@
 import { roundsCount, runGame } from '../index.js';
-import getRandomNum from '../random-num.js';
+import getRandomNum from '../random.js';
 
 const description = 'What is the result of the expression?';
 const minNum = 0;

@@ -12,9 +12,12 @@
 5. Determination of a prime number.
 
 ## Installation
-Using npm:
+Firstly you have to fork this repo and clone it locally
+
+Then using npm:
 ```shell
-$ npm install -g brain-games-from-dan4ik
+$ npm install
+$ npm link
 ```
 
 ## Starting the game "Calculator"

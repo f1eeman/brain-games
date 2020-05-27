@@ -1,5 +1,5 @@
 import { roundsCount, runGame } from '../index.js';
-import getRandomNum from '../random-num.js';
+import getRandomNum from '../random.js';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 
