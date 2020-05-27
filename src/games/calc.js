@@ -1,5 +1,5 @@
 import { roundsCount, runGame } from '../index.js';
-import getRandomNum from '../general-functions.js';
+import getRandomNum from '../random-num.js';
 
 const description = 'What is the result of the expression?';
 const minNum = 0;
@@ -38,8 +38,8 @@ const getQuests = (count) => {
     const secondNum = getRandomNum(minNum, maxNum);
     const operator = getOperator();
     const question = `${firstNum} ${operator} ${secondNum}`;
-    const anwser = (calculate(operator, firstNum, secondNum)).toString();
-    result.push([question, anwser]);
+    const answer = calculate(operator, firstNum, secondNum);
+    result.push([question, answer.toString()]);
   }
   return result;
 };

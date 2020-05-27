@@ -1,5 +1,5 @@
 import { roundsCount, runGame } from '../index.js';
-import getRandomNum from '../general-functions.js';
+import getRandomNum from '../random-num.js';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
@@ -17,8 +17,8 @@ const getQuests = (count) => {
     const firstNum = getRandomNum();
     const secondNum = getRandomNum();
     const question = `${firstNum} ${secondNum}`;
-    const anwser = (getGreatestCommonDivisor(firstNum, secondNum)).toString();
-    result.push([question, anwser]);
+    const answer = getGreatestCommonDivisor(firstNum, secondNum);
+    result.push([question, answer.toString()]);
   }
   return result;
 };

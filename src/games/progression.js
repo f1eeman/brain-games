@@ -1,5 +1,5 @@
 import { roundsCount, runGame } from '../index.js';
-import getRandomNum from '../general-functions.js';
+import getRandomNum from '../random-num.js';
 
 const description = 'What number is missing in the progression?';
 const lengthProgression = 10;
@@ -24,8 +24,8 @@ const getQuests = (count, diff, length) => {
     const beginValue = getRandomNum();
     const hiddenElementIndex = getRandomNum(minIndex, maxIndex);
     const question = getQuestion(beginValue, diff, length, hiddenElementIndex);
-    const answer = (beginValue + (diff * hiddenElementIndex)).toString();
-    result.push([question, answer]);
+    const answer = beginValue + (diff * hiddenElementIndex);
+    result.push([question, answer.toString()]);
   }
   return result;
 };
