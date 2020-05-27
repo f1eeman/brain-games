@@ -1,6 +1,6 @@
 {
   "name": "frontend-project-lvl1",
-  "version": "1.4.1",
+  "version": "2.0.0",
   "description": "Личный проект «Игры разума» от Hexlet",
   "type": "module",
   "main": "src/index.js",

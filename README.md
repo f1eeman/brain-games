@@ -12,7 +12,7 @@
 5. Determination of a prime number.
 
 ## Installation
-Firstly you have to fork this repo and clone it locally
+Firstly you have to clone this repo
 
 Then using npm:
 ```shell
