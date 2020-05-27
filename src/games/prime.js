@@ -8,8 +8,8 @@ const isPrime = (num) => {
     return false;
   }
 
-  const stopValue = num / 2;
-  for (let i = 2; i <= stopValue; i += 1) {
+  const halfNum = num / 2;
+  for (let i = 2; i <= halfNum; i += 1) {
     if (num % i === 0) {
       return false;
     }
