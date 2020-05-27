@@ -14,7 +14,7 @@
 ## Installation
 Using npm:
 ```shell
-$ npm link
+$ npm install -g brain-games-from-dan4ik
 ```
 
 ## Starting the game "Calculator"
