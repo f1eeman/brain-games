@@ -39,10 +39,10 @@ Using npm:
 ```shell
 $ brain-even
 ```
-#### note
+##### note:
 the answer must be entered in lowercase
 
-[![asciicast](https://asciinema.org/a/OMHOAbyNerZBEche0g9sGWJ8s.svg)](https://asciinema.org/a/OMHOAbyNerZBEche0g9sGWJ8s)
+[![asciicast](https://asciinema.org/a/aOvY6ulA2D1Qo8in9hVZc5DzX.svg)](https://asciinema.org/a/aOvY6ulA2D1Qo8in9hVZc5DzX)
 
 ## "Determination of the greatest common divisor" game start.
 Using npm:
@@ -56,7 +56,7 @@ Using npm:
 ```shell
 $ brain-prime
 ```
-#### note
+##### note:
 the answer must be entered in lowercase
 
-[![asciicast](https://asciinema.org/a/VK2vg1FGC4oNsmAmNcydZRxo1.svg)](https://asciinema.org/a/VK2vg1FGC4oNsmAmNcydZRxo1)
+[![asciicast](https://asciinema.org/a/ldzXn9WDAm3b0INosWFJvjamd.svg)](https://asciinema.org/a/ldzXn9WDAm3b0INosWFJvjamd)
