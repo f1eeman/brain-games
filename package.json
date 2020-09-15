@@ -1,7 +1,7 @@
 {
-  "name": "frontend-project-lvl1",
+  "name": "brain-games",
   "version": "2.0.0",
-  "description": "Личный проект «Игры разума» от Hexlet",
+  "description": "'Brain Games' is a set of five console games, built on the principle of popular mobile applications to upgrade brain power. There are questions in every game needed to be answered correctly. The game is considered to be over after three questions answered correctly. In case of wrong answers the game is completed and the user’s being offered to play it again. ",
   "type": "module",
   "main": "src/index.js",
   "bin": {
@@ -10,9 +10,6 @@
     "brain-gcd": "bin/brain-gcd.js",
     "brain-math": "bin/brain-math.js",
     "brain-prime": "bin/brain-prime.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
