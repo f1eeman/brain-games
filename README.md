@@ -1,6 +1,6 @@
 # Brain games
 [![Maintainability](https://api.codeclimate.com/v1/badges/f7468856ebb70ff0f2a4/maintainability)](https://codeclimate.com/github/f1eeman/frontend-project-lvl1/maintainability)
-![Node CI](https://github.com/f1eeman/frontend-project-lvl1/workflows/Node%20CI/badge.svg)
+[![Node CI](https://github.com/f1eeman/frontend-project-lvl1/workflows/Node%20CI/badge.svg)](https://github.com/f1eeman/brain-games/actions)
 
 ## Description
 "Brain Games" is a set of five console games, built on the principle of popular mobile applications to upgrade brain power. There are questions in every game needed to be answered correctly. The game is considered to be over after three questions answered correctly. In case of wrong answers the game is completed and the user’s being offered to play it again. The games are as follows:
